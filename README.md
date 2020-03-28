@@ -17,5 +17,6 @@ And providing these shortcuts:
 * `/y`, `/yt`, `/youtube`, `/channel` -> https://www.youtube.com/channel/UC5CwaMl1eIgY8h02uZw7u8A
 * `/t`, `/tw`, `/twitter` -> https://twitter.com/suisei_hosimati
 * `/b`, `/bili`, `/bilibili` -> https://space.bilibili.com/9034870
+* `/sub` -> [https://www.you...u8A?sub_confirmation=1](https://www.youtube.com/channel/UC5CwaMl1eIgY8h02uZw7u8A?sub_confirmation=1) (YouTube channel w/ subscription confirmation box)
 
 *This site is not affiliated in any way with Hololive or Suisei Hosimati.*
