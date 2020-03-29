@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Suisei Portal</title>
+    <style>
+      * {
+        /* PR welcome for any correction. */
+        --suisei-color: #aacaf3;
+        --youtube-color: #ce0000;
+        --youtube-hover-color: #d73939;
+        --bilibili-color: #00a1d6;
+        --bilibili-hover-color: #31bcea;
+      }
+      body {
+        font-family: "Noto Sans", sans-serif;
+        text-align: center;
+        background-color: var(--suisei-color);
+      }
+      .youtubeColor {
+        background-color: var(--youtube-color);
+      }
+      .youtubeColor:hover,
+      .youtubeColor.selected {
+        background-color: var(--youtube-hover-color);
+      }
+      .youtubeFontColor {
+        color: var(--youtube-color);
+      }
+      .bilibiliColor {
+        background-color: var(--bilibili-color);
+      }
+      .bilibiliColor:hover,
+      .bilibiliColor.selected {
+        background-color: var(--bilibili-hover-color);
+      }
+      .bilibiliFontColor {
+        color: var(--bilibili-color);
+      }
+      .button {
+        color: white;
+        cursor: pointer;
+        height: 5vh;
+        width: 25vw;
+        max-width: 200px;
+        margin: 3vw;
+        border-radius: 6px;
+        line-height: 5vh;
+      }
+      #buttons {
+        display: flex;
+        justify-content: center;
+      }
+      a {
+        text-decoration: none;
+      }
+      @media screen and (max-width: 500px) {
+        #buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Live Portal</h1>
+    <p>Select your preferred source.</p>
+    <p>This preference will automatically apply for you in the future.</p>
+    <p>
+      Change your mind? Add "?noredirect" at the end of this page to choose
+      again.
+    </p>
+    <div id="buttons">
+      <div
+        id="ytBtn"
+        class="button youtubeColor"
+        onclick="setPrefAndGo('youtube')"
+      >
+        YouTube
+      </div>
+      <div
+        id="blBtn"
+        class="button bilibiliColor"
+        onclick="setPrefAndGo('bilibili')"
+      >
+        Bilibili
+      </div>
+    </div>
+    <div id="redirecting" style="display: none">
+      <span
+        >Sending you to
+        <a
+          id="youtubeSpan"
+          class="youtubeFontColor"
+          style="display: none"
+          href="/live/youtube"
+          >YouTube</a
+        >
+        <a
+          id="bilibiliSpan"
+          class="bilibiliFontColor"
+          style="display: none"
+          href="/live/bilibili"
+          >Bilibili</a
+        >...</span
+      >
+    </div>
+    <p>
+      ❤️ & ☄️ | <a href="https://github.com/outloudvi/suisei-url">Source</a>
+    </p>
+    <script>
+      var supportLocalStorage = Boolean(window.localStorage);
+      var letUserSelect = false;
+
+      function jump(force = false) {
+        if (!force) {
+          let href = window.location.href;
+          if (href.includes("?noredirect")) {
+            console.log("Auto redirect aborted.");
+            return;
+          }
+        }
+        if (supportLocalStorage) {
+          if (window.localStorage.live_pref == "bilibili") {
+            showResultOnly("bilibili");
+            document.querySelector("#blBtn").className += " selected";
+            window.location = "/live/bilibili";
+          } else if (window.localStorage.live_pref == "youtube") {
+            showResultOnly("youtube");
+            document.querySelector("#ytBtn").className += " selected";
+            window.location = "/live/youtube";
+          } else {
+            letUserSelect = true;
+          }
+        }
+      }
+
+      function showResultOnly(pref) {
+        document.querySelector("#buttons").style.display = "none";
+        document.querySelector("#redirecting").style.display = "block";
+        document.querySelector(`#${pref}Span`).style.display = "initial";
+      }
+
+      function setPrefAndGo(pref) {
+        window.localStorage.live_pref = pref;
+        jump(true);
+      }
+
+      jump();
+    </script>
+  </body>
+</html>

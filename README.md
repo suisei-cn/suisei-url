@@ -18,6 +18,7 @@ And providing these shortcuts:
 * `/t`, `/tw`, `/twitter` -> https://twitter.com/suisei_hosimati
 * `/b`, `/bili`, `/bilibili` -> https://space.bilibili.com/9034870
 * `/sub` -> [https://www.you...u8A?sub_confirmation=1](https://www.youtube.com/channel/UC5CwaMl1eIgY8h02uZw7u8A?sub_confirmation=1) (YouTube channel w/ subscription confirmation box)
+* `/live`, `/l` -> Redirect to whichever you prefer...
 * `/live/youtube`, `/l/y`, `/ly` -> https://www.youtube.com/channel/UC5CwaMl1eIgY8h02uZw7u8A/live
 * `/live/bilibili`, `/l/b`, `/lb` -> https://live.bilibili.com/190577
 
